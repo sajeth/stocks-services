@@ -1,7 +1,6 @@
 package com.saji.stocks;
 
-import com.saji.stocks.core.services.pojos.StockTAO;
-import com.saji.stocks.core.services.stock.IStock;
+import com.saji.stocks.core.services.watchlist.IWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +17,11 @@ import java.util.List;
 public class StockController {
 
     @Autowired
-    private IStock istock;
+    private IWatch iWatch;
 
-    @GetMapping("/listStocks")
-    public List<StockTAO> getAllActiveStocks() {
-        return istock.listAllActiveStocks();
-    }
-
-    @GetMapping("/new/listStocks")
-    public List<String> getAllNewActiveStocks() {
-        return istock.listNewStocks();
+    @GetMapping("/watchlist")
+    public List<String> getGoodStocks() {
+        return iWatch.listGoodStocks();
     }
 
 
